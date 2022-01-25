@@ -1,0 +1,228 @@
+*{
+    margin: 0 !important;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+}
+.products__container{
+    width: 100vw !important;
+    min-height: 100%;
+}
+
+.product__card.hidden{
+display: none;
+}
+
+/* ================================================= */
+.main__content__heading__div{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto !important;
+    border-bottom: 5px solid rgba(0,0,0,.125) !important;
+    margin: 20px 0 !important;
+}
+
+.main__heading{
+    width: 100%;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.main__content{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+.content__row{
+    width: 1500px;
+    height: 100%;
+    display: inline-flex;
+    padding: 10px;
+}
+
+
+.content__products{
+    width: 84%;
+    margin: 10px 5px !important;
+    display: grid;
+    grid-template-columns: repeat(4, 23%);
+    grid-column-gap:2.5%;
+    grid-row-gap: 20px;
+    padding: auto 20px;
+}
+
+.product__card{
+    border-radius: 10px;
+    min-height: 470px;
+    max-height: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.img__box{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 220px;
+    max-width: 220px !important;
+    max-height:220px !important;
+}
+
+.card-img-top{
+    max-width: 220px !important;
+    max-height:220px  !important;
+    position: relative;
+    left: 15%;
+}
+
+.product__card__title{
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+    margin: 10px;
+}
+.price__badge{
+    line-height: normal;
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    padding: 2px 4px 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    vertical-align: middle;
+    background-color: #388e3c;
+}
+.card-price{
+    position: absolute;
+    bottom: 60px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.card__btn{
+    margin-top: 10px !important;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+/* ======================================================================================= */
+
+.content__filter{
+    width: 14% !important;
+    margin: 10px 5px !important;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5px;
+    line-height: 1.5;
+    height: 100%;
+}
+
+.price__filter,
+.rating__filter{
+    width: 100%;
+    position: relative;
+    padding: 10px;
+    height: auto;
+}
+
+.filter__heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filter__content__button{
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid rgba(0,0,0,.125);
+    margin:5px 0px !important;
+    transition: 0.5s ease-in-out;
+}
+
+.filter__collapse{
+    height: 150px !important;
+}
+
+.filter__card{
+    padding: 0;
+    width: 100%;
+    min-height: 100% !important;
+}
+
+
+.filter__form{
+    width: 100%;
+}
+.form-check{
+    width: 185px !important;
+    display: inline-flex;
+    position: relative;
+    font-size: 18px;
+}
+
+.form-check-input{
+    position: relative;
+    align-self: center;
+}
+
+.form-check-label{
+    padding-left: 5px;
+    position: relative;
+    align-self: center;
+
+}
+
+.filter__apply__btn{
+    position: absolute !important;
+    align-self: center !important;
+    width: 100%;
+    border: none;
+    color: #000;
+    background-color: #fff;;
+    margin: 10px 5px;
+    bottom: 5px;
+}
+
+.filter__apply__btn:hover{
+    background-color: #fff;
+    color: blue;
+}
+
+
+.price__range{
+    padding: 5px;
+    align-self: center;
+}
+#amount{
+    border: none;
+    padding: 5px;
+    width: 90%;
+    margin-bottom: 10px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#slider-range{
+    width: 80%;
+    padding: 5px;
+    position: relative;
+    margin-top: 10px;
+    align-self: center;
+}
+
+.reset__button{
+    position:relative;
+    left: 40% !important;
+    margin-bottom: 10px !important;
+}
+
+.reset__button:hover{
+    color: blue;
+}

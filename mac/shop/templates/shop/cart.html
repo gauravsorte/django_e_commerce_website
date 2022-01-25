@@ -1,0 +1,115 @@
+{% extends "shop/basic.html" %}
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Cart Page</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Hii this is cart</h1>-->
+<!--{% for product, count  in cart_products %}-->
+<!--{% for prod in product%}-->
+<!--<h1>{{prod.product_name}}  -  {{count}}</h1>-->
+<!--{% endfor %}-->
+<!--{% endfor %}-->
+<!--</body>-->
+<!--</html>-->
+{% load static %}
+{% block css_ %} <link rel="stylesheet" href="{% static 'CSS/cart.css' %}">{% endblock %}
+
+{% block title %}Shop{% endblock %}
+{% block body %}
+
+      <!-- Content 1 -->
+      <div class="container cart__container">
+          <div class="row">
+            <div class="main__content">
+                <div class="main_content_heading">
+                    <h4 class="heading">My Cart(<span id="cart_value">{{total_products}}</span>)</h4>
+                </div>
+
+                {% for product, count  in cart_products %}
+                    {% for prod in product%}
+                         <div class="content">
+                    <div class="row product__section">
+                        <div class="product__img">
+                            <div class="img__box">
+                                <img src="/media/{{prod.image}}" alt="product__img" />
+                            </div>
+                        </div>
+                        <div class="product__details">
+                            <div class="product__name">{{prod.product_name}}</div>
+                            <div class="product__category">{{prod.category}}</div>
+                            <div class="product__price">&#8377; {{prod.price}}</div>
+                        </div>
+                    </div>
+                    <div class="products__buttons">
+                        <div class="buttons_">
+                            {% if count == 1 %}
+                            <a href="/shop/update_cart/minus_{{prod.id}}"  id="minus_btn_{{prod.id}}_" class="minus__button disabled" name="minus{{prod.id}}" disabled>-</a>
+                            {% else %}
+                            <a href="/shop/update_cart/minus_{{prod.id}}"  id="minus_btn_{{prod.id}}" class="minus__button" name="minus{{prod.id}}">-</a>
+                            {% endif %}
+
+                            <div class="product_count">
+                                <input type="text" class="_253qQJ" value="{{count}}">
+                            </div>
+                            <a href="/shop/update_cart/plus_{{prod.id}}" id="plus__btn_{{prod.id}}" class="plus__button" name="plus{{prod.id}}">+</a>
+                        </div>
+                        <div class="sflrp__button">
+<!--                            <div class="sfl_button">Save For Later</div>-->
+                            <div class="rp_button"><a href="/shop/update_cart/remove_{{prod.id}}">Remove Product</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                    {% endfor %}
+                {% endfor %}
+
+
+              <div class="place__order">
+                <button class="btn btn-lg btn-primary place__order__btn">Place Order</button>
+              </div>
+
+            </div>
+            <div class="sub__content">
+              <div class="sub_main__content">
+                  <div class="sub_main_content_heading">
+                    <h4 class="heading">Price Details</h4>
+                  </div>
+
+                  <div class="sub__content_row">
+                    <div class="price__content">
+                      Price({{total_products}} items)
+                    </div>
+                    <div class="price__content__count">
+                      &#8377 {{sum}}
+                    </div>
+                  </div>
+
+                  <div class="sub__content_row">
+                    <div class="delivery__charges">
+                      Delivery Charges
+                    </div>
+                    <div class="delivery__price">
+                      FREE
+                    </div>
+                  </div>
+
+                  <div class="sub__content_row total__content">
+                    <div class="total__price">
+                     Total Price
+                    </div>
+                    <div class="total__price__count">
+                      &#8377 {{sum}}
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+
+      </div>
+<script src="{% static 'JS/cart.js' %}"></script>
+{% endblock %}

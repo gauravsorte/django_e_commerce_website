@@ -1,0 +1,152 @@
+{% extends "shop/basic.html" %}
+
+{% load static %}
+{% block css_ %} <link rel="stylesheet" href="{% static 'CSS/style.css' %}">{% endblock %}
+
+{% block title %}Shop{% endblock %}
+
+{% block body %}
+<!--{% static 'images_demo/computer.jpg' %}-->{{ csrf_input }}
+<div id="main__carousel" class="carousel slide main__top__carousel" data-bs-ride="carousel">
+
+  <div class="carousel-inner">
+      <div class="carousel-item active">
+      <img src="{% static 'images_demo/computer.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item ">
+      <img src="{% static 'images_demo/fashion.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images_demo/computer.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a href="#main__carousel" class="carousel-control-prev top__carousel__prev__btn" type="button"  data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden"><i class="arrow right"></i></span>
+  </a>
+  <a href="#main__carousel" class="carousel-control-next top__carousel__next__btn" type="button"  data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden"><i class="arrow left"></i></span>
+  </a>
+</div>
+
+<div class="container ">
+    {% for product , range , nSlides in allProds %}
+    <div class="categories__main__heading">
+        <h5 class="my-5 category__heading">Flash Sale On {{product.0.category}} - Recommended Items</h5>
+        <a href="/shop/view_products/{{product.0.category}}" id="{{product.0.category}}" class="btn btn-small btn-success view__more__button">View More</a>
+    </div>
+    
+    <div class="row">
+
+        <a class="carousel-control-prev " href="#demo{{forloop.counter}}" role="button" data-slide="prev">
+            <span class="prev__icon">&larr;</span>
+        </a>
+        <a class="carousel-control-next" href="#demo{{forloop.counter}}" role="button" data-slide="next">
+            <span class="next__icon">&rarr;</span>
+        </a>
+
+    <div id="demo{{forloop.counter}}" class="carousel slide carousel__main" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="carousel_indicator_bar active"></li>
+
+            {% for i in range %}
+            <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" class="carousel_indicator_bar"></li>
+            {% endfor %}
+
+        </ol>
+
+        <div class="container carousel-inner no-padding">
+
+            <!--  First Slide           -->
+            <div class="carousel-item active active_product_carousel">
+                <!--  First Product  -->
+
+                {% for prod in product%}
+                <div class="card col-xs-3 col-sm-3 col-md-3 product__card" >
+                    <div class="product__image__div">
+                        <div class="image__box">
+                            <img src="/media/{{prod.image}}" class="card-img-top" alt="..." />
+                        </div>
+                    </div>
+
+                    <div class="card-body product__body">
+                        <h5 class="card-title product__name">{{prod.product_name|slice:":14"}}..</h5>
+                        <p class="card-text product__desc">{{prod.desc|slice:":15"}}...</p>
+                        <div class="card__buttons__div">
+                            <a href="" id="pr{{prod.id}}" class="btn btn-primary btn-sm cart add__cart"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="" id="product_view_{{prod.id}}" class=" btn btn-success btn-sm view__product">View</a>
+                        </div>
+                        <!-- <a href="#" id="pr{{prod.id}}" class="btn btn-primary cart add__cart">Add To Cart</a> -->
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+            </div>
+            <div class="carousel-item">
+                {% endif%}
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+
+    </div>
+    {% endfor %}
+
+</div>
+
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+<script src="{% static 'JS/index.js' %}"></script>
+{% endblock %}
+
+<!--{% block js %}-->
+<!--<script>-->
+<!--    console.log("Working");-->
+<!--    if(localStorage.getItem('cart')==null)-->
+<!--    {-->
+<!--        var cart={};-->
+<!--        console.log('Cart is Empty!!!');-->
+<!--    }-->
+<!--    else-->
+<!--    {-->
+<!--        cart = JSON.parse(localStorage.getItem('cart'));-->
+<!--        console.log('Cart is Not Empty!!!');-->
+<!--    }-->
+
+<!--    document.getElementById('cart').innerHTML = Object.keys(cart).length;-->
+
+<!--    //Jquery Code-->
+
+<!--    $('.cart').click(function()-->
+<!--    {-->
+<!--        console.log('Clicked!!!');-->
+<!--        var idstr = this.id.toString();-->
+<!--        console.log(idstr);-->
+
+<!--        // {'pr1':2}-->
+<!--        if( cart[idstr] != undefined)-->
+<!--            cart[idstr] += 1 ;-->
+<!--        else-->
+<!--            cart[idstr]=1;-->
+
+<!--        localStorage.setItem('cart',JSON.stringify(cart));-->
+<!--        console.log(cart);-->
+<!--        document.getElementById('cart').innerHTML = Object.keys(cart).length;-->
+<!--    });-->
+
+<!--    var myCarousel = document.querySelector('.main__top__carousel')-->
+<!--    var carousel = new bootstrap.Carousel(myCarousel, {-->
+<!--        interval: 4000,-->
+<!--        wrap: true-->
+<!--    })-->
+
+<!--    window.onscroll = function(){myFunction()};-->
+
+<!--</script>-->
+<!--{% endblock %}-->
